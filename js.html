@@ -11,11 +11,11 @@
             <input type="text" id="input" v-model="message">
             <button @click="test">Cacher</button>
             <p v-if="showMessage"> {{ reversedMessage }} </p>
-            <ul>
+            <ul :class="{'red':showMessage}">
                 <list-item v-for="(item,index) in list" :key="index" :item="item"></list-item>
             </ul>
         </div>
-        <script> 
+        <script>
         Vue.component('list-item', {
                 props:{
                     item: {
@@ -47,6 +47,11 @@
                 }           
             })
         </script>
+         <style>
+            .red {
+            color: red;
+            }
+            </style>
 
             
 	</body>
