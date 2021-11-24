@@ -9,8 +9,8 @@
 		<div id="app">
             <label for="input">Saisir un message</label>
             <input type="text" id="input" v-model="message">
-            <button @click="test">Appuie</button>
-            <p v-if="showMessage"> {{ message }} </p>
+            <button @click="test">Cacher</button>
+            <p v-if="showMessage"> {{ reversedMessage }} </p>
             <ul>
                 <list-item v-for="(item,index) in list" :key="index" :item="item"></list-item>
             </ul>
@@ -39,9 +39,12 @@
                   test: function (){
                       this.showMessage = !this.showMessage
                     }
-                }
-            
-           
+                },
+                computed:{
+                    reversedMessage: function (){
+                        return this.message.split('').reverse().join('');
+                    }
+                }           
             })
         </script>
 
