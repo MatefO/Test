@@ -11,20 +11,38 @@
             <input type="text" id="input" v-model="message">
             <button @click="test">Appuie</button>
             <p v-if="showMessage"> {{ message }} </p>
+            <ul>
+                <list-item v-for="(item,index) in list" :key="index" :item="item"></list-item>
+            </ul>
         </div>
-        <script>
+        <script> 
+        Vue.component('list-item', {
+                props:{
+                    item: {
+                        type: String,
+                        required: true
+                    }
+                },
+                template: '<li> {{item}} </li>'
+            });
+                
             const app = new Vue({
                 el: '#app',
                 data: {
                     message: 'Hello Vue!',
-                    showMessage: true
+                    showMessage: true,
+                    list:[
+                        "element1","element2","element3"
+                    ]
                 },
                 methods: {
                   test: function (){
                       this.showMessage = !this.showMessage
                     }
                 }
-            });
+            
+           
+            })
         </script>
 
             
